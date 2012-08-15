@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Import Test Framework -->
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+    <!-- Import canvas.js -->
+    <script type="text/javascript" src="../lib/yepnope.1.0.2-min.js"></script>
+    <script type="text/javascript" src="../scripts/blocks.js"></script>
+    <script type="text/javascript" src="../plugins/canvas.js"></script>
+    <!-- Do Tests -->
+    <script>
+      $(document).ready(function(){
+        module("Script Extraction");
+        test("basic extract_script", function(){
+            var a = $('<span>');
+            a.data('script', 'testScript');
+            equal($(a).extract_script(), 'testScript');
+        });
+        test("basic argument replacement", function(){
+            var a = $('<span>');
+            // This needed to have a "socket block"
+            $(a).html('<span class="block"><span class="blockhead"><span class="label"><span class="socket"></span></span></span>');
+            a.data('script', 'test{{1}}Script');
+            var b = $('<span>');
+            $(b).addClass('wrapper');
+            b.data('script', 'The');
+            $(a).find('.socket').append(b);
+            equal($(a).extract_script(), 'testTheScript');
+        });
+        test("multiple argument replacement", function(){
+            var a = $('<span>');
+            // This needed to have a "socket block"
+            $(a).html('<span class="block"><span class="blockhead"><span class="label"><span class="socket"></span></span></span>');
+            a.data('script', '{{1}}, {{2}}, {{3}}');
+            var b1 = $('<span>');
+            $(b1).addClass("wrapper");
+            b1.data('script', 'one');
+            var b2 = $('<span>');
+            $(b2).addClass("wrapper");
+            b2.data('script', 'two');
+            var b3 = $('<span>');
+            $(b3).addClass("wrapper");
+            b3.data('script', 'three');
+            $(a).find('.socket').append(b1, b2, b3);
+            equal($(a).extract_script(), 'one, two, three');
+        });
+        test("block replacement", function(){
+            var a = $('<span>');
+            a.data('script', 'BLOCK: [[1]]');
+            // This needed to have a "child block"
+            $(a).html("<span class='block'><span class='contained'></span></span>");
+            var b = $('<span class="wrapper">');
+            b.data("script", 'blockdata!');
+            $(a).find('.contained').append(b);
+            equal($(a).extract_script(), "BLOCK: blockdata!");
+        });
+        test("multiple block replacement", function(){
+            var a = $('<span>');
+            a.data('script', '[[1]] -> [[2]], [[3]]');
+            // This needed to have a "child block"
+            $(a).html("<span class='block'><span id='1' class='contained'></span><span id='2' class='contained'></span><span id='3' class='contained'></span></span>");
+            var b1 = $('<span class="wrapper">');
+            b1.data("script", 'One');
+            $(a).find('#1').append(b1)
+            var b2 = $('<span class="wrapper">');
+            b2.data("script", 'Two');
+            $(a).find('#2').append(b2)
+            var b3 = $('<span class="wrapper">');
+            b3.data("script", 'Three');
+            $(a).find('#3').append(b3)
+            equal($(a).extract_script(), "One -> Two, Three");
+        });
+
+        module("Label Assignment");
+        test("basic label assignment", function(){
+            var a = $('<span>');
+            a.data('script', 'label##');
+            a.data('label', 'label##');
+            $(a).id(1);
+            equal(a.data('script'), 'label_1');
+        });
+
+      });
+    </script>
+  </head>
+  <body>
+    <h1 id="qunit-header">Canvas Plugin Tests</h1>
+   <h2 id="qunit-banner"></h2>
+   <div id="qunit-testrunner-toolbar"></div>
+   <h2 id="qunit-userAgent"></h2>
+   <ol id="qunit-tests"></ol>
+   <div id="qunit-fixture">test markup, will be hidden</div>
+  </body>
+</html>

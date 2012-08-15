@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Import Test Framework -->
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
+    <!-- Import blocks.js -->
+    <!--<script type="text/javascript" src="../lib/yepnope.1.0.2-min.js"></script>-->
+    <script type="text/javascript" src="../scripts/blocks.js"></script>
+    <!-- Do Tests -->
+    <script>
+      $(document).ready(function(){
+        module("Block Description");
+        test("basic block_description", function(){
+            var a = $('<span>');
+            a.data('script', 'testScript');
+            a.data('label', 'testLabel');
+            a.data('klass', 'testKlass');
+            a.data('containers', 'testContainers');
+            a.data('subContainerLabels', 'testContainerLabels');
+            a.data('locals', []);
+            deepEqual($(a).block_description(), { 
+                                              contained: [],
+                                              containers: 'testContainers',
+                                              klass:  'testKlass',
+                                              label:  'testLabel',
+                                              locals: [],
+                                              next:   '',
+                                              script: 'testScript',
+                                              sockets:[],
+                                              subContainerLabels: 'testContainerLabels'
+
+                                            });
+        });
+        test('block_description script replacement', function(){
+            var a = $('<span>');
+            a.data('script', "loop_index##");
+            a.data('label', "loop_index##");
+            $(a).id(1);
+            deepEqual($(a).block_description(), { 
+                                              contained: [],
+                                              containers: undefined,
+                                              klass:  undefined,
+                                              label:  "loop_index_1",
+                                              next:   '',
+                                              script: "loop_index_1",
+                                              sockets:[],
+                                              subContainerLabels: undefined
+
+                                            });
+        });
+        test('block_description locals replacement', function(){
+            var l1 = { script: 'script_1##',
+                       label:  'label_1##',
+                       klass:  'class_1',
+                       type:   'type_1',
+                     }
+            var l2 = { script: 'script_2##',
+                       label:  'label_2##',
+                       klass:  'class_2',
+                       type:   'type_2',
+                     }
+            var a = $('<span>');
+            $(a).id(2);
+            a.data('locals', [l1, l2]);
+            a.data('label', '');
+            a.data('script', '');
+            deepEqual($(a).block_description(), { contained: [],
+                                                  containers: undefined,
+                                                  klass: undefined,
+                                                  label: "",
+                                                  locals: [ { script: 'script_1_2',
+                                                              label:  'label_1_2',
+                                                              klass:  'class_1',
+                                                              type:   'type_1'
+                                                            },
+                                                            { script: 'script_2_2',
+                                                              label:  'label_2_2',
+                                                              klass:  'class_2',
+                                                              type:   'type_2',
+                                                            } ],
+                                                   next: "",
+                                                   script: "",
+                                                   sockets: [],
+                                                   subContainerLabels: undefined
+                                                 });
+         });
+         test('block_description locals replacement with child_block', function(){
+            var l1 = { script: 'script_1##',
+                       label:  'label_1##',
+                       klass:  'class_1',
+                       type:   'type_1',
+                     }
+            var l2 = { script: 'script_2##',
+                       label:  'label_2##',
+                       klass:  'class_2',
+                       type:   'type_2',
+                     }
+            var a = $('<span>');
+            a.html('<span class="block"><span class="contained"></span></span>');
+            var b = $('<span>');
+            a.data('locals', [l1]);
+            a.data('label', '');
+            a.data('script', '');
+            b.data('locals', [l2]);
+            b.data('label', '');
+            b.data('script', '');
+            $(a).id(1);
+            $(b).id(2);
+            $(b).addClass('wrapper');
+            $(a).find('.contained').append(b);
+            deepEqual($(a).block_description(), { contained: [ {
+                                                      contained: [],
+                                                      containers: undefined,
+                                                      klass: undefined,
+                                                      label: "",
+                                                      locals: [ { script: 'script_2_2',
+                                                                  label:  'label_2_2',
+                                                                  klass:  'class_2',
+                                                                  type:   'type_2'
+                                                                }],
+                                                       next: "",
+                                                       script: "",
+                                                       sockets: [],
+                                                       subContainerLabels: undefined
+                                                  }],
+                                                  containers: undefined,
+                                                  klass: undefined,
+                                                  label: "",
+                                                  locals: [ { script: 'script_1_1',
+                                                              label:  'label_1_1',
+                                                              klass:  'class_1',
+                                                              type:   'type_1'
+                                                            }],
+                                                   next: "",
+                                                   script: "",
+                                                   sockets: [],
+                                                   subContainerLabels: undefined
+                                                 });
+             });
+         test('block_description multiple chained returns correct', function(){
+            var a = $('<span>');
+            var returns_data = {
+                klass: "variables",
+                label: "number##",
+                script: "local.number##",
+                type: "number"
+            }
+            a.data('label', 'variable number## [number]');
+            a.data('script', 'local.number## = {{1}};');
+            a.data('returns', returns_data);
+            var b = $('<span>');
+            b.data('label', 'variable number## [number]');
+            b.data('script', 'local.number## = {{1}};');
+            b.data('returns', returns_data);
+            a.id(1);
+            b.id(2);
+            a.html('<span class="block"></span><span class="next"></span>');
+            b.addClass('wrapper');
+            a.find('.next').append(b);
+            deepEqual(a.block_description(), {    contained: [],
+                                                  containers: undefined,
+                                                  klass: undefined,
+                                                  label: "variable number_1 [number]",
+                                                  next: {
+                                                    contained: [],
+                                                    containers: undefined,
+                                                    klass: undefined,
+                                                    label: "variable number_2 [number]",
+                                                    next: "",
+                                                    returns: {
+                                                        klass: "variables",
+                                                        label: "number_2",
+                                                        script: "local.number_2",
+                                                        type: "number"
+                                                    },
+                                                    script: "local.number_2 = {{1}};",
+                                                    sockets: [],
+                                                    subContainerLabels: undefined,
+                                                  },
+                                                  returns: {
+                                                    klass: "variables",
+                                                    label: "number_1",
+                                                    script: "local.number_1",
+                                                    type: "number"
+                                                  },
+                                                  script: "local.number_1 = {{1}};",
+                                                  sockets: [],
+                                                  subContainerLabels: undefined
+                                             });
+      });
+      test('id substitutes label and retains arguments', function(){
+            var a = $('<span>');
+            a.data('label', "variable number## [number]");
+            a.data('script', "number## = {{1}}");
+            a.html('<span class="block"><span class="blockhead"><span class="label"></span></span></span>');
+            a.find('.label').html(Label(a.data('label')));
+            a.find('input').val('1234');
+            a.id(5);
+            equal(a.find('input').val(), '1234');
+            equal(a.find('.label').text(), 'variable number_5');
+      });
+   });
+    </script>
+  </head>
+  <body>
+    <h1 id="qunit-header">Blocks.js Tests</h1>
+   <h2 id="qunit-banner"></h2>
+   <div id="qunit-testrunner-toolbar"></div>
+   <h2 id="qunit-userAgent"></h2>
+   <ol id="qunit-tests"></ol>
+   <div id="qunit-fixture">test markup, will be hidden</div>
+  </body>
+</html>

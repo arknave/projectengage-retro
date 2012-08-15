@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Project Engage Programming: Documentation Table of Contents
+    </title>
+    <link href="../stylesheets/bootstrap.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="page-header">
+        <h1> Development Documentation </h1>
+      </div>
+      <ol>
+        <li> <a href="#project_organization">Project Organization </a></li>
+        <li> <a href="#creating_blocks"> Creating Blocks </a></li>
+        <li> <a href="#todo"> to-do list </a></li>
+      </ol>
+      <div class="page-header" id="project_organization">
+        <h2> Project Organization </h2>
+      </div>
+      <h3> Top Level Directories </h3>
+      <div class="row">
+        <div class="span8">
+          <table class="table-bordered table-striped table" >
+            <thead>
+              <th> Directory </th>
+              <th> Description </th>
+            </thead>
+            <tr>
+              <td>
+                development-bundle
+              </td>
+              <td>
+                Examples of how to use JQuery-UI elements
+              </td>
+            </tr>
+            <tr>
+              <td>
+                docs
+              </td>
+              <td>
+                Documentation files
+              </td>
+            </tr>
+            <tr>
+              <td>
+                images
+              </td>
+              <td>
+                Images for html files (mostly unused)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                lib
+              </td>
+              <td>
+                External dependencies for project
+              </td>
+            </tr>
+            <tr>
+              <td>
+                plugins
+              </td>
+              <td>
+                Scripts that define the language the user writes in
+              </td>
+            </tr>
+            <tr>
+              <td>
+                scripts
+              </td>
+              <td>
+                Scripts for the user interface and programming environment
+              </td>
+            </tr>
+            <tr>
+              <td>
+                stylesheets
+              </td>
+              <td>
+                Stylesheets for the project
+              </td>
+            </tr>
+            <tr>
+              <td>
+                tests
+              </td>
+              <td>
+                Test suites for the project
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <h3>Important Files</h3>
+      <div class="row">
+        <div class="span8">
+          <table class="table-bordered table-striped table">
+            <thead>
+              <th> Filename </th>
+              <th> Description </th>
+            </thead>
+            <tr>
+              <td> plugins/canvas.js </td>
+              <td> Defines every block in the language </td>
+            </tr>
+            <tr>
+              <td> plugins/canvas_demo.js </td>
+              <td> The demo programs </td>
+            <tr>
+              <td> scripts/blocks.js </td>
+              <td> Many utility functions for working with blocks </td>
+            </tr>
+            <tr>
+              <td> scripts/drag.js </td>
+              <td> Drag and drop behavior </td>
+            </tr>
+            <tr>
+              <td> scripts/runtime.js </td>
+              <td> Language runtime objects, like the Local and Global objects </td>
+            </tr>
+            <tr>
+              <td> scripts/workspace.js </td>
+              <td> Sets up user interface; saving and loading functionality </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="page-header" id="creating_blocks">
+        <h2> Creating Blocks </h2>
+      </div>
+      <p> You can create blocks by </p>
+      <div class="page-header" id="todo">
+        <h2> To-do list </h2>
+      </div>
+      <ul>
+        <li>
+            We <em>need</em> the ability to scroll while dragging a block.
+            Jquery-ui drag and drop might be able to fix this.
+        </li>
+        <li>
+            Make a "view image" link (so people can download their creations!).
+            This should be really easy by using canvas.toDataUrl().
+        </li>
+        <li>
+            Make a system for submitting programs. This would require some
+            server side stuff, but shouldn't be too dificult by utilizing the
+            current export script functionality.
+        </li>
+        <li>
+            Modify the variable id assignment so that new elements take the
+            smallest empty id, rather than the max id plus one, or let the user
+            name the variables, rather than auto assigning a name based on id.
+        </li>
+        <li>
+            Change the save format to store less information. Currently, when a
+            program is saved, the code is saved along with it, so if there is a
+            bugfix in the code for a block, the program does not receive the
+            update. This can result in incredibly confusing bugs.
+        </li>
+        <li>
+            Change project to use something like jquery-ui for drag and drop
+            support, rather than a custom drag and drop setup. This would
+            reduce the amount of code we have to maintain.
+        </li>
+        <li>
+            Currently, when images are saved (with browser canvas saving
+            functionality), the entire canvas is saved, rather than the part of
+            the canvas with content in it. This often results in a large amount
+            of white space arount the image. Make a save function that trims
+            the canvas to only include non-transparent pixels
+        </li>
+        <li>
+            Find out if the "variables" menu is helpful or necessary. I suspect
+            that merging variables declarations with constructors would
+            simplify things, but possibly remove an important concept.
+        </li>
+        <li>
+            Add a "modify variables" block which takes a variable and a new value
+			and sets the variable equal to that value.			
+        </li>
+        <li>
+            Some types, like the size and point types, feel redundant because
+            they will only be immediatly used. Perhaps they should be done away
+            with and replaced with integer arguments.
+        </li>
+        <li>
+            There's a lot of messy stuff we have to do because the data behind
+            blocks isn't coppied when a block is added to the script. It would
+            be nicer if every instance of a block had its own copy of certain
+            data objects like return and locals.
+        </li>
+        <li>
+            "Labels" (and other things) are stored as strings when there really ought
+            to be a label object. This has resulted in some pretty messy code, which 
+            could be cleaned up.
+        </li>
+        <li>
+            We need a better example video. The current one was chosen because
+            it was the only public domain video I could find in a short amount
+            of time. However, it is quite boring.
+        </li>
+        <li>
+            Add support for sound.
+        </li>
+        <li>
+            Add more scratch stuff. Primarily we would be interested in adding
+            sprites.
+        </li>
+        <li>
+            Write more examples!
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
