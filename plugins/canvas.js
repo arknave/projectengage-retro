@@ -115,6 +115,8 @@ window.choice_lists = {
         'pause', 'capslock', 'esc', 'space', 'pageup', 'pagedown', 
         'end', 'home', 'insert', 'del', 'numlock', 'scroll', 'meta']),
 	trig: ['sin', 'cos', 'tan'],
+	fourfunc: ['+', '-', '*', '/'],
+	equalities: ['<', '<=', '===', '>=', '>'],
     unit: ['px', 'em', '%', 'pt'],
     arity: ['0', '1', '2', '3', 'array', 'object'],
     types: ['string', 'number', 'boolean', 'array', 'object', 'function', 'color', 'shape', 'point', 'size', 'rect', 'gradient', 'pattern', 'imagedata', 'pixel', 'any'],
@@ -651,53 +653,25 @@ var menus = {
 			help: 'inverse trig functions of the number'
 		},
         {
-            label: '[number:0] + [number:0]', 
-            'type': 'number', 
-            script: "({{1}} + {{2}})",
-            help: 'sum of the two operands'
+                label: '[number:0] [choice:fourfunc] [number:0]', 
+                'type': 'number', 
+                script: "({{1}} {{2}} {{3}})",
+                help: 'Applies one of the four operations to the two operands'
         },
-        {
-            label: '[number:0] - [number:0]', 
-            'type': 'number', 
-            script: "({{1}} - {{2}})",
-            help: 'difference of the two operands'
-        },
-        {
-            label: '[number:0] * [number:0]', 
-            'type': 'number', 
-            script: "({{1}} * {{2}})",
-            help: 'product of the two operands'
-        },
-        {
-            label: '[number:0] / [number:0]',
-            'type': 'number', 
-            script: "({{1}} / {{2}})",
-            help: 'quotient of the two operands'
-        },
+		
         {
             label: 'pick random [number:1] to [number:10]', 
             'type': 'number', 
             script: "randint({{1}}, {{2}})",
             help: 'random number between two numbers (inclusive)'
         },
-        {
-            label: '[number:0] < [number:0]', 
-            'type': 'boolean', 
-            script: "({{1}} < {{2}})",
-            help: 'first operand is less than second operand'
-        },
-        {
-            label: '[number:0] = [number:0]', 
-            'type': 'boolean', 
-            script: "({{1}} === {{2}})",
-            help: 'two operands are equal'
-        },
-        {
-            label: '[number:0] > [number:0]', 
-            'type': 'boolean', 
-            script: "({{1}} > {{2}})",
-            help: 'first operand is greater than second operand'
-        },
+		{
+                label: '[number:0] [choice:equalities] [number:0]',
+                'type': 'boolean',
+                script: "({{1}} {{2}} {{3}})",
+                help: 'compares two numbers'
+            },
+       
         {
             label: '[boolean] and [boolean]', 
             'type': 'boolean', 
