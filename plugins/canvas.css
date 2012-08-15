@@ -1,7 +1,7 @@
 /* block and border colours for different groups of blocks */
 
-.control{ border-color: hsl(44, 81%, 49%); }
-.control > .block{ background-color: hsl(44, 81%, 85%); }
+.control{ border-color: hsl(42, 100%, 47%); }
+.control > .block{ background-color: hsl(42, 100%, 67%); }
 
 .arrays{ border-color: hsl(195, 65%, 79%); }
 .arrays > .block{ background-color: hsl(195, 62%, 89%); }
