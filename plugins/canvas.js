@@ -1014,7 +1014,7 @@ $('.socket input').live('click',function(){
 //Add the variable menu
 var body = $('<section class="submenu"></section>');
 var select = $('<h3 class="select"><a href="#">' + "Variable" + '</a></h3>').appendTo(body);
-var options = $('<div class="option"></div>').appendTo(body);
+var options = $('<div id="varlist" class="option"></div>').appendTo(body);
 options.append('<button id="mkvarbutton">Make a variable</button>');
 $("#accordion").append(body);
 $('#mkvarbutton').click(function() {$("#new_var_dialog").dialog('open'); });

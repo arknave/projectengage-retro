@@ -115,7 +115,7 @@
 				<fieldset>
 					<h2>Build-a-variable Workshop</h2>
 					<input id="varname" class="text ui-widget-content ui-corner-all"/>
-					<select>
+					<select id="vartype">
 						<option value="string">String</option>
 						<option value="number">Number</option>
 						<option value="boolean">Boolean</option>
@@ -323,6 +323,13 @@
 						modal: true,
 						resizable: false,
 							buttons: [
+								{
+									text: "Add",
+									"class": 'dialogbutton',
+									click: function() {
+										add_variable();
+									}
+								},
 								{
 									text: "Cancel",
 									"class": 'dialogbutton',

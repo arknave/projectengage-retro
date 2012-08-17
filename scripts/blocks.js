@@ -76,10 +76,11 @@ $.extend($.fn,{
     var head = this.find('> .block > .blockhead');
     var locals = head.find('.locals');
     if (!locals.length){
-        locals = $('<div class="locals block_menu"></div>');
+        //locals = $('<div class="locals block_menu"></div>');
         head.find('.label').after(locals);
     }
-    locals.append(block);
+    //locals.append(block);
+    $("#varlist").append(block);
     return this;
   },
   addSocketHelp: function(){

@@ -32,7 +32,7 @@ function test_block(block){
 }
 
 function test(){
-    var blocks = $('#accordion .wrapper');
+    var blocks = $('#accordion .wrapper, .block_menu .wrapper');
     var total = blocks.length;
     var success = 0;
     var fail = 0;
@@ -197,6 +197,12 @@ function delete_named_scripts(event){
         console.log('remove %s', title);
         localStorage.removeItem(title);
     }
+}
+function add_var(){
+    var varname = $("#varname").val();
+    var vartype = $("#vartype").val();
+    var varvalue = $("#varvalue").val();
+
 }
 
 
