@@ -198,13 +198,40 @@ function delete_named_scripts(event){
         localStorage.removeItem(title);
     }
 }
+
+function boolchange(){
+    if($("vartype option:selected")[0].text() === 'boolean'){
+        alert(" its a boolean!");
+    }
+}
+
+$("select").change(function(){
+    
+    if($("#vartype option:selected").text()=="Boolean"){
+        //console.log('weee');
+    }
+});
+
 function add_var(){
     var varname = $("#varname").val();
     var vartype = $("#vartype").val();
     var varvalue = $("#varvalue").val();
 
+    if(vartype==='string'){
+        varvalue = '"'+varvalue+'"';
+    }
+    initSpec = {
+        label: 'create variable ' + varname + ' assigned to ' + varvalue + ' which is a ' + vartype,
+        script: 'var ' + varname + '=' + varvalue + ';'
+    };
+    valSpec = {
+        label: varname,
+        'type': vartype,
+        script: varname
+    };
+    genVarBlock('Variables', initSpec);
+    genVarBlock('Variables', valSpec);
 }
-
 
 /*$('#save_dialog .save').click(save_named_scripts);
 $('#save_dialog .export').click(export_named_scripts);
@@ -283,9 +310,10 @@ window.show_workspace = function(){
     $('.workspace:visible .scripts_text_view').hide();
     $('.workspace:visible .scripts_workspace').show();
 }	
-	this.blocknames = new Array();
+
+this.blocknames = new Array();
 // Build the Blocks menu, this is a public method
-function menu(title, specs, show) {
+function menu(title, specs) {
 	var klass = title.toLowerCase();
 	var body = $('<section class="submenu"></section>');
 	var select = $('<h3 class="select"><a href="#">' + title + '</a></h3>').appendTo(body);
@@ -309,18 +337,36 @@ function menu(title, specs, show) {
 				category : spec.klass
 			});
 			nameMap[name] = Block(spec);
-			//nameMap is used inside search.js
+			//nameMap is used in search.js
 		}
 	});
 	$('#accordion').append(body);
-	/*if (show){
-	 select.addClass('selected');
-	 }else{
-	 options.hide();
-	 }*/
 	return;
 }
 
+function genVarBlock(title, spec) {
+    var options = $('#varlist');
+    var klass = title.toLowerCase();
+    if (spec !== undefined) {
+        spec.klass = klass;
+        var name = spec.label;
+        //changes the name to look "nicer"
+        while (name.indexOf('[') != -1) {
+            name = name.replace('[', '(');
+            name = name.replace(']', ')');
+        }
+        while (name.indexOf('#') != -1) {
+            name = name.replace('#', '');
+        }
+        var newblock = Block(spec);
+        options.append(newblock);
+        blocknames.push({
+            label : name,
+            category : spec.klass
+        });
+        nameMap[name] = newblock;
+    }
+}
 
 window.menu = menu;
 window.blocknames = this.blocknames;

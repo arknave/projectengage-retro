@@ -329,7 +329,7 @@ var menus = {
 		script: '{{1}} = {{2}};',
 		help: 'setting the value of a boolean variable'
 	}
-    ], false),
+    ]),
     img: menu('Image Manipulation', [
         {
             label: 'when image at url [string] loads',
@@ -540,7 +540,7 @@ var menus = {
         },
         {
             label: 'to string [any]',
-            script: '{{1}}.toString()',
+            script: '({{1}}).toString()',
             type: 'string',
             help: 'convert any object to a string'
         },
