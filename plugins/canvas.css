@@ -57,4 +57,5 @@
 .color{ border-color: yellow; }
 .string{ border-color: green; }
 .pixel{ border-color: orange; }
+.imagedata{ border-color: purple; }
 .any{ border-color: gray; }
