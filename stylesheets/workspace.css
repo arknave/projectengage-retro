@@ -101,6 +101,10 @@ src: url('fonts/trinigan-webfont.ttf'),
     display: block;
 }
 
+.scripts_text_view {
+    font-size: 12px;
+}
+
 .drop_cursor {
     height: 1px;
     border-bottom: 1px solid #CCC;
