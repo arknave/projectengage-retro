@@ -279,42 +279,42 @@ window.show_workspace = function(){
 }	
 	this.blocknames = new Array();
 // Build the Blocks menu, this is a public method
-	function menu(title, specs, show) {
-		var klass = title.toLowerCase();
-		var body = $('<section class="submenu"></section>');
-		var select = $('<h3 class="select"><a href="#">' + title + '</a></h3>').appendTo(body);
-		var options = $('<div class="option"></div>').appendTo(body);
+function menu(title, specs, show) {
+	var klass = title.toLowerCase();
+	var body = $('<section class="submenu"></section>');
+	var select = $('<h3 class="select"><a href="#">' + title + '</a></h3>').appendTo(body);
+	var options = $('<div class="option"></div>').appendTo(body);
 
-		$.each(specs, function(idx, spec) {
-			if (spec !== undefined) {
-				spec.klass = klass;
-				var name = spec.label;
-				//changes the name to look "nicer"
-				while (name.indexOf('[') != -1) {
-					name = name.replace('[', '(');
-					name = name.replace(']', ')');
-				}
-				while (name.indexOf('#') != -1) {
-					name = name.replace('#', '');
-				}
-				options.append(Block(spec));
-				blocknames.push({
-					label : name,
-					category : spec.klass
-				});
-				nameMap[name] = Block(spec);
-				//nameMap is used inside search.js
+	$.each(specs, function(idx, spec) {
+		if (spec !== undefined) {
+			spec.klass = klass;
+			var name = spec.label;
+			//changes the name to look "nicer"
+			while (name.indexOf('[') != -1) {
+				name = name.replace('[', '(');
+				name = name.replace(']', ')');
 			}
-		});
-		$('#accordion').append(body);
-		/*if (show){
-		 select.addClass('selected');
-		 }else{
-		 options.hide();
-		 }*/
-		return;
-	}
+			while (name.indexOf('#') != -1) {
+				name = name.replace('#', '');
+			}
+			options.append(Block(spec));
+			blocknames.push({
+				label : name,
+				category : spec.klass
+			});
+			nameMap[name] = Block(spec);
+			//nameMap is used inside search.js
+		}
+	});
+	$('#accordion').append(body);
+	/*if (show){
+	 select.addClass('selected');
+	 }else{
+	 options.hide();
+	 }*/
+	return;
+}
 
 
-	window.menu = menu;
-	window.blocknames = this.blocknames;
+window.menu = menu;
+window.blocknames = this.blocknames;
