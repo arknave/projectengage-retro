@@ -1,4 +1,3 @@
-
 window.DEBUG = false;
 window.debug = function debug(){
     if (window.DEBUG){

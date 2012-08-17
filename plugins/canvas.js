@@ -412,7 +412,7 @@ var menus = {
             help: 'draw the given image data into the canvas at the given coordinates'
         }
     ]),
-    array: menu('Arrays', [
+    /*array: menu('Arrays', [
         {
             label: 'new array##',
             script: 'local.array## = [];',
@@ -506,7 +506,7 @@ var menus = {
             ],
             help: 'run the blocks with each item of a named array'
         }
-    ], false),
+    ], false),*/
     strings: menu('Strings', [
         {
             label: 'string [string] split on [string]',
@@ -1010,5 +1010,14 @@ $('.socket input').live('click',function(){
     $(this).focus();
     $(this).select();
 });
+
+//Add the variable menu
+var body = $('<section class="submenu"></section>');
+var select = $('<h3 class="select"><a href="#">' + "Variable" + '</a></h3>').appendTo(body);
+var options = $('<div class="option"></div>').appendTo(body);
+options.append('<button id="mkvarbutton">Make a variable</button>');
+$("#accordion").append(body);
+$('#mkvarbutton').click(function() {$("#new_var_dialog").dialog('open'); });
 pluginReady();
+
 }
