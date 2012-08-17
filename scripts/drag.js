@@ -99,7 +99,7 @@
     }
 
     function step_targets() {
-        return target_canvas.find('.slot:only-child');
+        return target_canvas.find('.slot:');
     }
 
     function socket_targets(type) {
@@ -273,6 +273,13 @@
                     top : 0,
                     display : 'inline-block'
                 });
+				
+				drop_target.parent().find('.slot:first').after(drag_target);
+				//move the blocks below insertion to accommodate for the inserted block
+				var remainder = drag_target.siblings('.wrapper');
+				drag_target.siblings('.wrapper').remove();
+				drag_target.parent().find('.slot:last').after(remainder);
+				
                 drag_target.trigger('add_to_script');
             } else {
                 // Insert a value block into a socket
