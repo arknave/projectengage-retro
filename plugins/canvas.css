@@ -9,29 +9,29 @@
 .objects{ border-color: hsl(75, 90%, 66%); }
 .objects > .block { background-color: hsl(75, 90%, 76%); }
 
-.strings{ border-color: hsl(240, 65%, 83%); }
-.strings > .block {background-color: hsl(240, 65%, 93%); }
+.strings{ border-color: hsl(157, 7%, 83%); }
+.strings > .block {background-color: hsl(157, 7%, 93%); }
 
-.sensing{ border-color: hsl(200,98%,56%); }
-.sensing > .block{ background-color: hsl(200,98%,76%); }
+.sensing{ border-color: hsl(186,28%,48%); }
+.sensing > .block{ background-color: hsl(186,28%, 68%); }
 
-.math{ border-color: hsl(93,90%,66%); }
-.math > .block{ background-color: hsl(93,90%,76%); }
+.math{ border-color: black; }
+.math > .block{ background-color: #A9C47F; }
 
 .drawing{ border-color: hsl(23,80%,51%); }
 .drawing > .block{ background-color: hsl(23,80%,65%); }
 
-.point{ border-color: hsl(90, 65%, 79%); }
-.point > .block {background-color: hsl(90, 62%, 89%); }
+.point{ border-color: green; }
+.point > .block {background-color: #D0DEBB; }
 
 .size{ border-color: hsl(15,100%,63%); }
 .size > .block{ background-color: hsl(15,100%,83%); }
 
-.shapes{ border-color: hsl(150, 65%, 79%); }
-.shapes > .block {background-color: hsl(150, 62%, 89%); }
+.shapes{ border-color: hsl(43, 17%, 49%); }
+.shapes > .block {background-color: hsl(43, 17%, 59%); }
 
-.image{ border-color: hsl(296, 65%, 57%); }
-.image > .block{ background-color: hsl(296, 65%, 77%); }
+.image{ border-color: hsl(207, 39%, 37%); }
+.image > .block{ background-color: hsl(207, 39%, 57%); }
 
 .gradient{ border-color: hsl(225,65%,83%); }
 .gradient > .block{ background-color: hsl(225, 65%, 93%); }

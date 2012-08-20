@@ -959,8 +959,8 @@ var menus = {
             script: 'local.ctx.putImageData({{2}},{{3}}.x,{{3}}.y,{{1}}.x,{{1}}.y,{{1}}.w,{{1}}.h);',
             help: 'draw the given image data into the canvas from the given rect to the given position'
         }
-    ]),
-    video: menu('Video', [
+    ])
+    /*video: menu('Video', [
         {
             label: 'For every frame of video at [string:url]',
             containers: 1,
@@ -999,7 +999,7 @@ var menus = {
                     ],
             trigger: true
         }
-    ])
+    ])*/
 };
 
 // Demo functionality has been moved to canvas_demos.js
