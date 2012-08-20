@@ -29,7 +29,6 @@ q:before,q:after {
 abbr,acronym { 
     border:0;
 }
- 
 /* Scratch Layout Styles */
 
 html, body {
@@ -72,7 +71,7 @@ src: url('fonts/trinigan-webfont.ttf'),
 
 .tab_bar button, .tab_bar2 button{
     float: right;
-	font: "Trebuchet MS", sans-serif;
+	font: "Arial", sans-serif;
 }
 
 .workspace {
@@ -130,7 +129,7 @@ src: url('fonts/trinigan-webfont.ttf'),
 	margin: 0;
 	padding: 0;
 	/*float: left;*/
-	font: "Trebuchet MS", sans-serif;
+	font: "Arial", sans-serif;
 	margin: 0px;
 	margin-right: 7px;
 }
@@ -146,7 +145,7 @@ src: url('fonts/trinigan-webfont.ttf'),
 }
 
 #accordion{ 
-	font: "Trebuchet MS", sans-serif;
+	font: "Arial", sans-serif;
 	position: absolute;
     width: 14.5%;
     height: 90%;
@@ -269,85 +268,10 @@ src: url('fonts/trinigan-webfont.ttf'),
 	text-decoration:underline;
 }
 
-/* Save/Restore Dialogs 
-
-.dialog{
-    background-color: #CCC;
-    font-family: Helvetica;
-    padding: 1em;
-    border: 0px;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
+#new_var_dialog input {
+    display: inline-block;
 }
 
-.dialog h2{
-    font-size: 200%;
-    font-weight: bold;
-    text-align: center;
-}
-
-.dialog input{
-    font-size: 180%;
-    margin-bottom: 1em;
-    width: 99%;
-    border: 0px;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-    padding-left: 10px;
-}
-
-.dialog textarea{
-    width: 100%;
-    height: 5em;
-    font-size: 150%;
-}
-
-.dialog ul{
-    min-width: 400px;
-    margin-top: 1em;
-    margin-bottom: 1.5em;
-}
-
-.dialog button{
-    font-size: 120%;
-    float: right;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    margin-left: 1em;
-    background-color: #4D736D;
-    color: white;
-    margin-left: 1em;
-    border: 0px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: .5em;
-}
-
-.dialog .action{
-    margin-left: .2em;
-    font-size: 90%;
-}
-
-.dialog li{
-    display: block;
-    clear: both;
-    margin-bottom: .5em
-}
-
-.dialog .timestamp{
-    clear: both;
-    font-size: 80%;
-    color: #666;
-    margin-top: 1.5em;
-}
-
-.dialog button.delete, button.cancel {
-    background-color: #854D53; /*This is a redish color
-    margin-top: .5em;
-}*/
 /*Used in the field used to search for blocks.*/
 /*TODO really lopsided right now, needs to be fixed.*/
 .search-field{

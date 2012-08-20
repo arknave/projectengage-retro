@@ -222,7 +222,7 @@ var menus = {
             help: 'repeat forever until condition is true'
         }
             ]),
-    variables : menu("Variables", [
+    /*variables : menu("Variables", [
         {
             label: 'variable string## [string]',
             script: 'local.string## = {{1}};',
@@ -329,7 +329,7 @@ var menus = {
 		script: '{{1}} = {{2}};',
 		help: 'setting the value of a boolean variable'
 	}
-    ]),
+    ]),*/
     img: menu('Image Manipulation', [
         {
             label: 'when image at url [string] loads',

@@ -3,10 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Project Engage Programming</title>
-
+		<link type="text/css" href="stylesheets/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
 		<link href="stylesheets/workspace.css" rel="stylesheet" />
 		<link href="stylesheets/blocks.css" rel="stylesheet" />
-		<link type="text/css" href="stylesheets/custom-theme/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
 		<meta name="viewport" content="height=device-height, initial-scale=1.0" />
 	</head>
 	<body>
@@ -114,7 +113,10 @@
 			<form id="new_var_contents">
 				<fieldset>
 					<h2>Build-a-variable Workshop</h2>
+					Variable Name
 					<input id="varname" class="text ui-widget-content ui-corner-all"/>
+					<br />
+					Variable Type
 					<select id="vartype">
 						<option value="string">String</option>
 						<option value="number">Number</option>
@@ -123,9 +125,43 @@
 						<option value="point">Point</option>
 						<option value="imagedata">Imagedata</option>
 						<option value="pixel">Pixel</option>
-						<option value="other">Other</option>
 					</select>
-					<input id="varvalue" class="text ui-widget-content ui-corner-all"/>
+					<br />
+					<br />
+					Variable Value(s)
+					<div id="typevalform">
+						<div id="stringform" class="valform">
+							<input id="stringval" class="text ui-widget-content ui-corner-all"/>
+						</div>
+						<div id="numberform" class="valform hidden">
+							<input id="numberval" class="text ui-widget-content ui-corner-all"/>
+						</div>
+						<div id="booleanform" class="valform hidden">
+							<select id="booleanval" class="ui-widget-content">
+								<option value="true">true</option>
+								<option value="false">false</option>
+							</select>
+						</div>
+						<div id="shapeform" class="valform hidden">
+							<input id="shapex" class="text ui-widget-content ui-corner-all"/>
+							<input id="shapey" class="text ui-widget-content ui-corner-all"/>
+							<input id="shapew" class="text ui-widget-content ui-corner-all"/>
+							<input id="shapeh" class="text ui-widget-content ui-corner-all"/>
+						</div>
+						<div id="pointform" class="valform hidden">
+							<input id="pointx" class="text ui-widget-content ui-corner-all"/>
+							<input id="pointy" class="text ui-widget-content ui-corner-all"/>
+						</div>
+						<div id="imagedataform" class="valform hidden">
+							<input id="imagedataw" class="text ui-widget-content ui-corner-all"/>
+							<input id="imagedatah" class="text ui-widget-content ui-corner-all"/>
+						</div>
+						<div id="pixelform" class="valform hidden">
+							<input id="pixelr" class="text ui-widget-content ui-corner-all"/>
+							<input id="pixelg" class="text ui-widget-content ui-corner-all"/>
+							<input id="pixelb" class="text ui-widget-content ui-corner-all"/>
+						</div>
+					</div>
 				</fieldset>
 			</form>
 		</div>
@@ -213,7 +249,12 @@
 		</script>
 		<script>
 			$(document).ready(function() {
-		
+					//Clear all of the input fields
+					$('input').val('');
+					//Reset the new variable dialog
+					$("#vartype").val('string');
+
+					//Apply JQuery-UI to elements 
 					$("#radio").buttonset();
 					$("button").button();
 					$("#search").catcomplete({
@@ -318,8 +359,8 @@
 					});
 					$("#new_var_dialog").dialog({
 						autoOpen: false,
-						height: 300,
-						width: 450,
+						height: 250,
+						width: 325,
 						modal: true,
 						resizable: false,
 							buttons: [

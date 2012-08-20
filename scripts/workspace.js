@@ -199,29 +199,46 @@ function delete_named_scripts(event){
     }
 }
 
-function boolchange(){
-    if($("vartype option:selected")[0].text() === 'boolean'){
-        alert(" its a boolean!");
-    }
-}
-
-$("select").change(function(){
-    
-    if($("#vartype option:selected").text()=="Boolean"){
-        //console.log('weee');
-    }
+$("#vartype").change(function(){
+    var type = $('#vartype option:selected').val();
+    console.log(type);
+    $('.valform').addClass('hidden'); 
+    $('#'+type+'form').removeClass('hidden');
 });
 
 function add_var(){
     var varname = $("#varname").val();
     var vartype = $("#vartype").val();
-    var varvalue = $("#varvalue").val();
+    var varvalue;
+    switch(vartype){
+        case 'string':
+            varvalue = '"'+$("#stringval").val()+'"';
+            break;
+        case 'number':
+            varvalue = $("#numberval").val();
+            break;
+        case 'boolean':
+            varvalue = $("#booleanval").val();
+            break;
+        case 'shape':
+            varvalue = '{ x: '+$("#shapex").val()+', y: '+$("#shapey").val()+ ', w: '+$("#shapew").val()+', h: '+$("#shapeh").val()+' }';
+            break;
+        case 'point':
+            varvalue = '{ x: '+$("#pointx").val()+', y: '+$("#pointy").val()+ ' }';
+            break;
+        case 'imagedata':
+            varvalue = 'local.ctx.createImageData('+$("#imagedataw").val()+','+$("#imagedatah").val()+')';
+            break;
+        case 'pixel':
+            varvalue = '{ r: '+$("#pixelr").val()+', g: '+$("#pixelg").val()+ ', b: '+$("#pixelb").val()+' }';
+            break;
+        default:
+            varvalue = 0;
+            break;
 
-    if(vartype==='string'){
-        varvalue = '"'+varvalue+'"';
     }
     initSpec = {
-        label: 'create variable ' + varname + ' assigned to ' + varvalue + ' which is a ' + vartype,
+        label: 'create ' + vartype + ' ' + varname + ' assigned to ' + varvalue,
         script: 'var ' + varname + '=' + varvalue + ';'
     };
     valSpec = {
