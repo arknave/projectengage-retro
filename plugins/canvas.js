@@ -168,7 +168,7 @@ var menus = {
             label: 'wait [number:1] secs',
             containers: 1,
             script: 'setTimeout(function(){[[1]]},1000*{{1}});',
-            help: 'pause before running the following blocks'
+            help: 'pause indicated amount before running the following blocks'
         },
         {
             label: 'repeat [number:10]', 
@@ -186,7 +186,7 @@ var menus = {
         {
             label: 'broadcast [string:ack] message', 
             script: '$(".stage").trigger({{1}});',
-            help: 'send this message to any listeners'
+            help: 'send this message to any listeners/receivers'
         },
         {
             label: 'when I receive [string:ack] message', 
@@ -194,7 +194,7 @@ var menus = {
             slot: false,
             containers: 1,
             script: '$(".stage").bind({{1}}, function(){[[1]]});',
-            help: 'add a listener for the given message, run these blocks when it is received'
+            help: 'this receives broadcast messages and runs the following scripts'
         },
         {
             label: 'forever if [boolean:false]', 
@@ -318,17 +318,17 @@ var menus = {
 		script: 'parseInt({{1}})',
 		type: 'number',
 		help: 'returning a number from a string'
-	},
-	{
+	    },
+	    {
             label: 'Increment [number] by [number]',
             script: "{{1}} = {{1}} + {{2}};",
             help: 'increment variable by number'
         },
-	{
+	    {
 		label: 'change [boolean: ] to [boolean]',
 		script: '{{1}} = {{2}};',
 		help: 'setting the value of a boolean variable'
-	}
+	     }
     ]),*/
     img: menu('Image Manipulation', [
         {
@@ -395,16 +395,19 @@ var menus = {
             label: 'get pixel at coordinates [number:0] [number:0] from [imagedata]',
             script: '(function(){ var data = {{3}}.data; var redIndex = ({{1}} * 4) + ({{2}} * {{3}}.width * 4); return { r: data[redIndex], g: data[redIndex + 1], b: data[redIndex + 2]};})()',
             type: 'pixel'
+            help: 'returns the pixel from the indicated location of the image '
         },
         {
             label: 'imageData [imagedata] width',
             script: '{{1}}.width',
             type: 'number'
+            help: 'width of the image'    
         },
         {
             label: 'imageData [imagedata] height',
             script: '{{1}}.height',
             type: 'number'
+            help: 'height of the image'
         },
         {
             label: 'draw imageData [imagedata] at point [point]',
