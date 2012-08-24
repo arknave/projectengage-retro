@@ -279,14 +279,16 @@
                 
                 //move the blocks below insertion to accommodate for the inserted block
                 var remainder = drag_target.siblings('.wrapper');
-                var datinfo = remainder.data();
-                console.log(datinfo);
-
+                console.log(remainder);
+                //blocks lose their data so datinfo stores the data before they get lost through insertion
+                var datinfo = remainder.data(); //this is only including the data from the first block (others are nested)
+                
 
                 drag_target.siblings('.wrapper').remove();
                 drag_target.parent().find('.slot:last').after(remainder);
                 for ( var key in datinfo) {
                     remainder.data(key,datinfo[key]);
+                    //console.log(datinfo);
                 }
 
                 drag_target.trigger('add_to_script');
