@@ -11,11 +11,12 @@
     <div class="container-fluid">
       <div class="page-header">
         <h1> Development Documentation </h1>
+        <small> <a href="../index.html"> Back to Home </a> <small>
       </div>
       <ol>
         <li> <a href="#project_organization">Project Organization </a></li>
-        <li> <a href="#creating_blocks"> Creating Blocks </a></li>
-        <li> <a href="#todo"> to-do list </a></li>
+        <!-- <li> <a href="#creating_blocks"> Creating Blocks </a></li> -->
+        <li> <a href="#todo"> To-do list </a></li>
       </ol>
       <div class="page-header" id="project_organization">
         <h2> Project Organization </h2>
@@ -129,17 +130,22 @@
           </table>
         </div>
       </div>
-      <div class="page-header" id="creating_blocks">
+      <!-- <div class="page-header" id="creating_blocks">
         <h2> Creating Blocks </h2>
       </div>
-      <p> You can create blocks by </p>
+      <p> You can create blocks by </p> -->
       <div class="page-header" id="todo">
         <h2> To-do list </h2>
       </div>
       <ul>
         <li>
-            We <em>need</em> the ability to scroll while dragging a block.
-            Jquery-ui drag and drop might be able to fix this.
+            Implement useful keyboard shortcuts, that would quicken use.
+        </li>
+        <li>
+            Create a way for users to comment their code through the UI, maybe through highlights and text to the side.
+        </li>
+        <li>
+            We need to have a dialog where users can create their own functions, and be able to reference them. 
         </li>
         <li>
             Make a "view image" link (so people can download their creations!).
@@ -151,21 +157,11 @@
             current export script functionality.
         </li>
         <li>
-            Modify the variable id assignment so that new elements take the
-            smallest empty id, rather than the max id plus one, or let the user
-            name the variables, rather than auto assigning a name based on id.
-        </li>
-        <li>
             Change the save format to store less information. Currently, when a
             program is saved, the code is saved along with it, so if there is a
             bugfix in the code for a block, the program does not receive the
             update. This can result in incredibly confusing bugs.
-        </li>
-        <li>
-            Change project to use something like jquery-ui for drag and drop
-            support, rather than a custom drag and drop setup. This would
-            reduce the amount of code we have to maintain.
-        </li>
+        </li>        
         <li>
             Currently, when images are saved (with browser canvas saving
             functionality), the entire canvas is saved, rather than the part of
@@ -174,13 +170,8 @@
             the canvas to only include non-transparent pixels
         </li>
         <li>
-            Find out if the "variables" menu is helpful or necessary. I suspect
-            that merging variables declarations with constructors would
-            simplify things, but possibly remove an important concept.
-        </li>
-        <li>
             Add a "modify variables" block which takes a variable and a new value
-			and sets the variable equal to that value.			
+			      and sets the variable equal to that value.			
         </li>
         <li>
             Some types, like the size and point types, feel redundant because
@@ -208,7 +199,7 @@
         </li>
         <li>
             Add more scratch stuff. Primarily we would be interested in adding
-            sprites.
+            sprites. Light development has been made and you can view it <a href = "http://www.github.com/arknave/LASAProjectEngage">here. </a>
         </li>
         <li>
             Write more examples!
