@@ -150,14 +150,14 @@
 .slot {
     top: -7px;
     position: absolute;
-    background-color: #CCC;
+    background-color: rgb(238,238,238);
     width: 20px;
 }
 
 
 .contained {
   display: block;
-  background-color: #CCC;
+  background-color: rgb(238,238,238);
   position: relative;
   padding-top: 1px;
   margin-left: 10px;

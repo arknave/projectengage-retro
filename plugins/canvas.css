@@ -9,8 +9,8 @@
 .objects{ border-color: hsl(75, 90%, 66%); }
 .objects > .block { background-color: hsl(75, 90%, 76%); }
 
-.strings{ border-color: hsl(157, 7%, 83%); }
-.strings > .block {background-color: hsl(157, 7%, 93%); }
+.strings{ border-color: hsl(28, 4%, 70%); }
+.strings > .block {background-color: hsl(28, 4%, 80%); }
 
 .sensing{ border-color: hsl(186,28%,48%); }
 .sensing > .block{ background-color: hsl(186,28%, 68%); }

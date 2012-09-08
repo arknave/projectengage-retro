@@ -80,7 +80,7 @@ src: url('fonts/trinigan-webfont.ttf'),
     bottom: 0px;
     width: 34.8%;
     height: 93.5%;
-    background-color: #CCC;
+    background-color: rgb(238,238,238);
     border: 1px solid #111;
     overflow-x: auto;
     overflow-y: auto; 
