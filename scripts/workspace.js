@@ -209,6 +209,7 @@ $("#vartype").change(function(){
 function add_var(){
     var varname = $("#varname").val();
     var vartype = $("#vartype").val();
+    var varklass = $("#vartype").text();
     var varvalue;
     switch(vartype){
         case 'string':
@@ -235,19 +236,28 @@ function add_var(){
         default:
             varvalue = 0;
             break;
+    }
+    if(vartype!='string'){
 
     }
-    initSpec = {
-        label: 'create ' + vartype + ' ' + varname + ' assigned to ' + varvalue,
-        script: 'var ' + varname + '=' + varvalue + ';'
-    };
-    valSpec = {
-        label: varname,
-        'type': vartype,
-        script: varname
-    };
-    genVarBlock('Variables', initSpec);
-    genVarBlock('Variables', valSpec);
+    else{
+        initSpec = {
+            label: 'create ' + vartype + ' ' + varname + ' assigned to ' + varvalue,
+            script: 'var ' + varname + '=' + varvalue + ';'
+        };
+        valSpec = {
+            label: varname,
+            'type': vartype,
+            script: varname
+        };
+        changeSpec = {
+            label: 'set [any] to [any]',
+            script: '{{1}} = {{2}}' 
+        }
+        genVarBlock(varklass, initSpec);
+        genVarBlock(varklass, valSpec);
+        genVarBlock(varklass, changeSpec);
+    }
 }
 
 /*$('#save_dialog .save').click(save_named_scripts);

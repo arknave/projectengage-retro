@@ -110,6 +110,9 @@
 			</div>
 		</div>
 		<div class="dialog" id="new_var_dialog" title="New Variable">
+			<div id="newvarerror" class="hidden ui-state-error">
+				The textboxes below will only accept numbers!
+			</div>
 			<form id="new_var_contents">
 				<fieldset>
 					<h2>Build-a-variable Workshop</h2>
@@ -176,7 +179,6 @@
 			<textarea rows=10 class="text ui-widget-content ui-corner-all"></textarea>
 		</div>
 		<script src="lib/jquery-1.7.2.min.js"></script>
-		<!--<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>-->
 		<script src="lib/jquery.ui.core.js"></script>
 		<script src="lib/jquery.ui.widget.js"></script>
 		<script src="lib/jquery.ui.position.js"></script>
@@ -369,6 +371,7 @@
 									"class": 'dialogbutton',
 									click: function() {
 										add_var();
+										$("#new_var_contents input").val('');
 										$(this).dialog("close");
 									}
 								},
