@@ -284,7 +284,7 @@ function add_var(){
         if(vartype == 'imagedata'){
             changeSpec = {
             label: 'set [any] to width [number] and height [number]',
-            script: '{{1}} = { w:{{2}}, h:{{3}} };'
+            script: '{{1}} = local.ctx.createImageData( {{2}},{{3}} );'
             }
         }
 
