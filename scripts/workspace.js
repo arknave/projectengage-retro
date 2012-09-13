@@ -250,30 +250,50 @@ function add_var(){
         };
         changeSpec = {
             label: 'set [any] to [any]',
-            script: '{{1}} = {{2}}' + ';'
+            script: '{{1}} = {{2}};'
+        }
+
+        if(vartype=='number'){
+            changeSpec = {
+            label: 'set [any] to [number]',
+            script: '{{1}} = {{2}};'
+            }
         }
 
         if(vartype=='boolean'){
             changeSpec = {
             label: 'set [any] to [boolean]',
-            script: '{{1}} = {{2}}' + ';'
+            script: '{{1}} = {{2}};'
             }
         }
 
-        /*if(vartype == 'shape'){
+        if(vartype == 'shape'){
             changeSpec = {
             label: 'set [any] to x [number] y [number] width [number] height [number]',
-            script: '{{1}} = {{2}},{{3}},{{4}},{{5}}' + ';'
+            script: '{{1}} = { x:{{2}}, y:{{3}}, w:{{4}}, h:{{5}} };'
             }
         }
 
         if(vartype == 'point'){
             changeSpec = {
             label: 'set [any] to x [number] and y [number]',
-            script: '{{1}} = {{2}},{{3}}' + ';'
+            script: '{{1}} = { x:{{2}}, y:{{3}} };'
             }
-        }*/
+        }
 
+        if(vartype == 'imagedata'){
+            changeSpec = {
+            label: 'set [any] to width [number] and height [number]',
+            script: '{{1}} = { w:{{2}}, h:{{3}} };'
+            }
+        }
+
+        if(vartype == 'pixel'){
+            changeSpec = {
+            label: 'set [any] to red value [number] green value [number] blue value [number]',
+            script: '{{1}} = { r:{{2}}, g:{{3}}, b:{{4}} };'
+            }
+        }
 
         genVarBlock(varklass, initSpec);
         genVarBlock(varklass, valSpec);
@@ -291,7 +311,7 @@ function add_var(){
         };
         changeSpec = {
             label: 'set [any] to [any]',
-            script: '{{1}} = {{2}}' + ';'
+            script: '{{1}} = {{2}};'
         }
         genVarBlock(varklass, initSpec);
         genVarBlock(varklass, valSpec);

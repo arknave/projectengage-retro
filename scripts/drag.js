@@ -232,7 +232,7 @@
         // TODO: Add scrolling if dragging off of workspace:
         // $('.workspace').scrollTop($('.workspace').scrollTop() + 10)
         //
-        console.log(current_position.left + "," + current_position.top);
+        //console.log(current_position.left + "," + current_position.top);
         if(current_position.top<SCROLL_HIT_TOP)
         $('.workspace').scrollTo('-='+(SCROLL_SPEED)+'px', 0);
         if(current_position.top>$(window).height()-SCROLL_HIT_BOTTOM)

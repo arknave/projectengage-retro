@@ -24,8 +24,15 @@ jQuery.fn.extend({
       if (this.length === 0) return '';
       if (this.is(':input')){
 		  if (this.parent().is('.trig')){
-		      return this.val();
-          }else if (this.parent().is('.string')){
+              return this.val();
+          }
+          else if(this.parent().is('.equalities')){
+             return this.val();
+          }
+          else if(this.parent().is('.fourfunc')){
+             return this.val();
+          }
+          else if (this.parent().is('.string')){
               return '"' + this.val() + '"';
           }else{
               return this.val();
@@ -669,11 +676,11 @@ var menus = {
             help: 'random number between two numbers (inclusive)'
         },
 		{
-                label: '[number:0] [choice:equalities] [number:0]',
-                'type': 'boolean',
-                script: "({{1}} {{2}} {{3}})",
-                help: 'compares two numbers'
-            },
+            label: '[number:0] [choice:equalities] [number:0]',
+            'type': 'boolean',
+            script: "({{1}}  {{2}}  {{3}})",
+            help: 'compares two numbers'
+        },
        
         {
             label: '[boolean] and [boolean]', 
