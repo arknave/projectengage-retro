@@ -238,6 +238,7 @@ function add_var(){
             break;
     }
     if(vartype!='string'){
+        
         initSpec = {
             label: 'create ' + vartype + ' ' + varname + ' assigned to ' + varvalue,
             script: 'var ' + varname + '=' + varvalue + ';'
@@ -251,6 +252,29 @@ function add_var(){
             label: 'set [any] to [any]',
             script: '{{1}} = {{2}}' + ';'
         }
+
+        if(vartype=='boolean'){
+            changeSpec = {
+            label: 'set [any] to [boolean]',
+            script: '{{1}} = {{2}}' + ';'
+            }
+        }
+
+        /*if(vartype == 'shape'){
+            changeSpec = {
+            label: 'set [any] to x [number] y [number] width [number] height [number]',
+            script: '{{1}} = {{2}},{{3}},{{4}},{{5}}' + ';'
+            }
+        }
+
+        if(vartype == 'point'){
+            changeSpec = {
+            label: 'set [any] to x [number] and y [number]',
+            script: '{{1}} = {{2}},{{3}}' + ';'
+            }
+        }*/
+
+
         genVarBlock(varklass, initSpec);
         genVarBlock(varklass, valSpec);
         genVarBlock(varklass, changeSpec);
