@@ -249,7 +249,7 @@ function add_var(){
         };
         changeSpec = {
             label: 'set [any] to [any]',
-            script: '{{1}} = {{2}}' 
+            script: '{{1}} = {{2}}' + ';'
         }
         genVarBlock(varklass, initSpec);
         genVarBlock(varklass, valSpec);
@@ -267,7 +267,7 @@ function add_var(){
         };
         changeSpec = {
             label: 'set [any] to [any]',
-            script: '{{1}} = {{2}}' 
+            script: '{{1}} = {{2}}' + ';'
         }
         genVarBlock(varklass, initSpec);
         genVarBlock(varklass, valSpec);
