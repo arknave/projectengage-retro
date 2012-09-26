@@ -286,12 +286,21 @@
 
                 drag_target.siblings('.wrapper').remove();
                 drag_target.parent().find('.slot:last').after(remainder);
+                //var dat = drop_target.after
                 for ( var key in datinfo) {
                     remainder.data(key,datinfo[key]);
                     //console.log(datinfo);
                 }
 
+
+                /*
+                Need to use recursion to save the data from the nested blocks to variables that are in the recursive method.
+                Or can store the data on a stack, which we can pop again after the blocks have been rearranged.
+                */
+
+
                 drag_target.trigger('add_to_script');
+                //remainder.trigger('add_to_script');
 
 
             } else{
