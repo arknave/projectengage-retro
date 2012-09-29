@@ -275,6 +275,10 @@
                 });
 				
 				
+                //INSERTION BLOCKS HERE
+
+                /*TODO: Need to use recursion to save the data from the nested blocks to variables that are in the recursive method.
+                Or can store the data on a stack, which we can pop again after the blocks have been rearranged.*/
                 drop_target.parent().find('.slot:first').after(drag_target);
                 
                 //move the blocks below insertion to accommodate for the inserted block
@@ -286,17 +290,17 @@
 
                 drag_target.siblings('.wrapper').remove();
                 drag_target.parent().find('.slot:last').after(remainder);
+                
                 //var dat = drop_target.after
-                for ( var key in datinfo) {
+                
+                //this is the old for loop that stores data into the block immediately underneath the insertion
+                /*for ( var key in datinfo) {
                     remainder.data(key,datinfo[key]);
                     //console.log(datinfo);
-                }
+                }*/
 
-
-                /*
-                Need to use recursion to save the data from the nested blocks to variables that are in the recursive method.
-                Or can store the data on a stack, which we can pop again after the blocks have been rearranged.
-                */
+                //this is the the start of the recursive method, algorithm is near bottom of code
+                data_store(datinfo, remainder);                 
 
 
                 drag_target.trigger('add_to_script');
@@ -452,6 +456,21 @@
     }
 
     // Utility methods
+    function data_store(dat, rem){ // This is the recurvise function for insertion, no algorithm implemented yet
+
+        if(dat===0){
+            //need a way to stop this recursive method
+            return "not much";
+        }
+
+        for ( var key in dat) {
+            rem.data(key,dat[key]);
+            
+        }
+
+        //data_store();
+    }
+
     function mag(p1, p2){
         return Math.sqrt(Math.pow(p1.left - p2.left, 2) + Math.pow(p1.top - p2.top, 2));
     }
